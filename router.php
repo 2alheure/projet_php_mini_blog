@@ -66,4 +66,5 @@ switch ($_SERVER['PATH_INFO']) {
 	case '/liste-articles':
 		require DOSSIER_CONTROLLERS . '/controller_article.php';
 		afficher_liste_articles();
+		break;
 }

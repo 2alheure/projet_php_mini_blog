@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/parties/haut_de_page.php'; ?>
+<?php require DOSSIER_VIEWS . '/parties/haut_de_page.php'; ?>
 
 <div class="jumbotron">
 	<h1 class="display-3">Mon super blog</h1>
@@ -56,4 +56,4 @@
 	<button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
 
-<?php require __DIR__ . '/parties/bas_de_page.php'; ?>
+<?php require DOSSIER_VIEWS . '/parties/bas_de_page.php'; ?>

@@ -104,6 +104,12 @@ if (!isset($_SERVER['PATH_INFO'])) {
 			break;
 
 
+		case '/s-enregistrer':
+			require DOSSIER_CONTROLLERS . '/controller_utilisateur.php';
+			s_enregistrer();
+			break;
+
+
 		default:
 			// Si aucune route ne correspond
 			// On affiche une erreur 404

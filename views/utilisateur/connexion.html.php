@@ -17,5 +17,6 @@
 
     <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
+<p>Vous n'avez pas encore de compte ? <a href="<?php echo BASE_URL . '/s-enregistrer'; ?>">Créez-en un !</a></p>
 
 <?php require DOSSIER_VIEWS . '/parties/bas_de_page.php'; ?>

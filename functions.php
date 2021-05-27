@@ -15,3 +15,42 @@ function resume(Article $article): string {
 
 	return $resume;
 }
+
+
+/**
+ * Redirige l'utilisateur vers une autre URL
+ * 
+ * @param string $ou Vers où rediriger l'utilisateur
+ */
+function rediriger(string $ou) {
+	header('location: ' . BASE_URL . $ou);
+	die(); // On n'oublie pas de die() pour éviter les éventuelles instruction suivantes, indésirables
+}
+
+
+/**
+ * Affiche les erreurs
+ * 
+ * @param array $erreurs Les erreurs à afficher
+ */
+function afficher_erreurs(array $erreurs) {
+	foreach ($erreurs as $erreur) { ?>
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>Erreur</strong> <?php echo $erreur; ?>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+<?php }
+}
+
+
+/**
+ * Formate une date en format français (jj/mm/aaaa)
+ * 
+ * @param string $date Le timestamp de la base de données
+ * @return string La date correctement formatée
+ */
+function date_formatee(string $date): string {
+	return date_format(date_create($date), 'd/m/Y');
+}

@@ -1,7 +1,7 @@
 <?php
 
 // Définition de mes constantes utiles
-const BASE_URL = 'http://localhost2/formawave_fil_rouge/dwwm6/projet_php_mini_blog/router.php';
+const BASE_URL = 'http://localhost/test/projet_php_mini_blog/router.php';
 const DOSSIER_MODELS = __DIR__ . '/src/models';
 const DOSSIER_VIEWS = __DIR__ . '/views';
 const DOSSIER_CONTROLLERS = __DIR__ . '/src/controllers';
@@ -72,5 +72,11 @@ switch ($_SERVER['PATH_INFO']) {
 	case '/details-article':
 		require DOSSIER_CONTROLLERS . '/controller_article.php';
 		afficher_details_article();
+		break;
+
+
+	case '/ajouter-article':
+		require DOSSIER_CONTROLLERS . '/controller_article.php';
+		creer_article();
 		break;
 }

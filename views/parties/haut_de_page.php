@@ -26,6 +26,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo BASE_URL . '/liste-articles'; ?>">Liste des articles</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
+						</li>
 					</ul>
 				</div>
 			</div>

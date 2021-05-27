@@ -116,3 +116,19 @@ function modifier_article() {
 
 	require DOSSIER_VIEWS . '/article/modifier.html.php';
 }
+
+function supprimer_article() {
+
+	if (empty($_GET['id'])) {
+		// Si on n'a pas d'id, la page ne peut pas fonctionner
+		erreur404();
+	}
+
+	// On récupère l'article
+	$article = Article::retrieveByPK($_GET['id']);
+	// On le supprime
+	$article->delete();
+
+	// On redirige
+	rediriger('/liste-articles');
+}

@@ -14,6 +14,7 @@
 			<small class="text-muted"><a href="<?php echo BASE_URL . '/details-article?id=' . $article->id; ?>">Lire l'article.</a></small>
 			<p class="m-0 mt-3">
 				<a href="<?php echo BASE_URL . '/modifier-article?id=' . $article->id; ?>" class="btn btn-primary">Modifier</a>
+				<a href="<?php echo BASE_URL . '/supprimer-article?id=' . $article->id; ?>" class="btn btn-danger">Supprimer</a>
 			</p>
 		</article>
 	<?php } ?>

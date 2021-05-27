@@ -87,6 +87,12 @@ switch ($_SERVER['PATH_INFO']) {
 		break;
 
 
+	case '/supprimer-article':
+		require DOSSIER_CONTROLLERS . '/controller_article.php';
+		supprimer_article();
+		break;
+
+
 	default:
 		// Si aucune route ne correspond
 		// On affiche une erreur 404

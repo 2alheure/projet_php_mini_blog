@@ -54,3 +54,23 @@ function afficher_erreurs(array $erreurs) {
 function date_formatee(string $date): string {
 	return date_format(date_create($date), 'd/m/Y');
 }
+
+
+/**
+ * Affiche une page d'erreur
+ */
+function erreur() {
+	header('HTTP/1.0 500 Internal Server Error');	// On modifie l'entête
+	require DOSSIER_VIEWS . '/erreurs/generique.html.php';	// On affiche la vue d'erreur
+	die();
+}
+
+
+/**
+ * Affiche une page d'erreur 404
+ */
+function erreur404() {
+	header('HTTP/1.0 404 Not Found');
+	require DOSSIER_VIEWS . '/erreurs/404.html.php';
+	die();
+}

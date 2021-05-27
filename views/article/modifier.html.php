@@ -1,6 +1,6 @@
 <?php require DOSSIER_VIEWS . '/parties/haut_de_page.php'; ?>
 
-<h1>Ajouter un article</h1>
+<h1>Modifier un article</h1>
 
 <?php if (!empty($erreurs)) afficher_erreurs($erreurs); ?>
 

@@ -29,6 +29,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo BASE_URL . '/connexion'; ?>">Se connecter</a>
+						</li>
 					</ul>
 				</div>
 			</div>

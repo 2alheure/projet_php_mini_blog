@@ -92,6 +92,12 @@ if (!isset($_SERVER['PATH_INFO'])) {
 			break;
 
 
+		case '/connexion':
+			require DOSSIER_CONTROLLERS . '/controller_utilisateur.php';
+			connexion();
+			break;
+
+
 		default:
 			// Si aucune route ne correspond
 			// On affiche une erreur 404

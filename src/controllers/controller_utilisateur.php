@@ -90,6 +90,13 @@ function connexion() {
                     // On y stocke notre utilisateur
                     $_SESSION['utilisateur'] = $utilisateur;
 
+                    if (!empty($_POST['souvenir'])) {
+                        // Si la checkbox est cochée
+                        
+                        // On crée un cookie pour un mois
+                        setcookie('souvenir', $utilisateur->id, time() + 30 * 24 * 60 * 60);    // 30j, 24h, 60min, 60s
+                    }
+
                     // On redirige
                     rediriger('/accueil');
                 } else {

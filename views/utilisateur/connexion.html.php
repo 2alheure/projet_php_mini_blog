@@ -15,6 +15,13 @@
         <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
     </div>
 
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="souvenir" id="souvenir" value="oui">
+            Se souvenir de moi
+        </label>
+    </div>
+
     <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
 <p>Vous n'avez pas encore de compte ? <a href="<?php echo BASE_URL . '/s-enregistrer'; ?>">Créez-en un !</a></p>

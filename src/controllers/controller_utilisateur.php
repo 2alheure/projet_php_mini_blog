@@ -58,3 +58,12 @@ function connexion() {
 
     require DOSSIER_VIEWS . '/utilisateur/connexion.html.php';
 }
+
+function deconnexion() {
+    // Pour pouvoir détruire une session...
+    // Il faut qu'elle existe
+    session_start();
+    session_destroy();
+
+    rediriger('/accueil');
+}

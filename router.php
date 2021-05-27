@@ -26,75 +26,75 @@ if (!isset($_SERVER['PATH_INFO'])) {
 	require DOSSIER_CONTROLLERS . '/controller_accueil.php';
 	// J'appelle la fonction du controller
 	afficher_accueil();
-}
+} else {
+	/**
+	 * Pour la valeur du $_SERVER['PATH_INFO']
+	 * Je pourrais faire des if ... elseif ... elseif ... etc
+	 * Mais c'est trop lourd à écrire à mes yeux
+	 * 
+	 * Donc je pars sur un switch
+	 */
 
-/**
- * Pour la valeur du $_SERVER['PATH_INFO']
- * Je pourrais faire des if ... elseif ... elseif ... etc
- * Mais c'est trop lourd à écrire à mes yeux
- * 
- * Donc je pars sur un switch
- */
+	// if ($_SERVER['PATH_INFO'] == '/' || $_SERVER['PATH_INFO'] == '/accueil' || $_SERVER['PATH_INFO'] == '/home') {
+	// 	// Si le segment d'URL qui suit "router.php" est "/", "/accueil" ou "/home"
+	// 	// J'affiche la page d'accueil
 
-// if ($_SERVER['PATH_INFO'] == '/' || $_SERVER['PATH_INFO'] == '/accueil' || $_SERVER['PATH_INFO'] == '/home') {
-// 	// Si le segment d'URL qui suit "router.php" est "/", "/accueil" ou "/home"
-// 	// J'affiche la page d'accueil
-
-// 	// J'inclus le controller
-// 	require DOSSIER_CONTROLLERS . '/controller_accueil.php';
-// 	// J'appelle la fonction du controller
-// 	afficher_accueil();
-// } elseif ($_SERVER['PATH_INFO'] == '/liste-articles') {
-// 	// ...
-// }
-
-
-switch ($_SERVER['PATH_INFO']) {
-	case '/':
-	case '/accueil':
-	case '/home':
-		// Si le segment d'URL qui suit "router.php" est "/", "/accueil" ou "/home"
-		// J'affiche la page d'accueil
-
-		// J'inclus le controller
-		require DOSSIER_CONTROLLERS . '/controller_accueil.php';
-		// J'appelle la fonction du controller
-		afficher_accueil();
-		break;
+	// 	// J'inclus le controller
+	// 	require DOSSIER_CONTROLLERS . '/controller_accueil.php';
+	// 	// J'appelle la fonction du controller
+	// 	afficher_accueil();
+	// } elseif ($_SERVER['PATH_INFO'] == '/liste-articles') {
+	// 	// ...
+	// }
 
 
-	case '/liste-articles':
-		require DOSSIER_CONTROLLERS . '/controller_article.php';
-		afficher_liste_articles();
-		break;
+	switch ($_SERVER['PATH_INFO']) {
+		case '/':
+		case '/accueil':
+		case '/home':
+			// Si le segment d'URL qui suit "router.php" est "/", "/accueil" ou "/home"
+			// J'affiche la page d'accueil
+
+			// J'inclus le controller
+			require DOSSIER_CONTROLLERS . '/controller_accueil.php';
+			// J'appelle la fonction du controller
+			afficher_accueil();
+			break;
 
 
-	case '/details-article':
-		require DOSSIER_CONTROLLERS . '/controller_article.php';
-		afficher_details_article();
-		break;
+		case '/liste-articles':
+			require DOSSIER_CONTROLLERS . '/controller_article.php';
+			afficher_liste_articles();
+			break;
 
 
-	case '/ajouter-article':
-		require DOSSIER_CONTROLLERS . '/controller_article.php';
-		creer_article();
-		break;
+		case '/details-article':
+			require DOSSIER_CONTROLLERS . '/controller_article.php';
+			afficher_details_article();
+			break;
 
 
-	case '/modifier-article':
-		require DOSSIER_CONTROLLERS . '/controller_article.php';
-		modifier_article();
-		break;
+		case '/ajouter-article':
+			require DOSSIER_CONTROLLERS . '/controller_article.php';
+			creer_article();
+			break;
 
 
-	case '/supprimer-article':
-		require DOSSIER_CONTROLLERS . '/controller_article.php';
-		supprimer_article();
-		break;
+		case '/modifier-article':
+			require DOSSIER_CONTROLLERS . '/controller_article.php';
+			modifier_article();
+			break;
 
 
-	default:
-		// Si aucune route ne correspond
-		// On affiche une erreur 404
-		erreur404();
+		case '/supprimer-article':
+			require DOSSIER_CONTROLLERS . '/controller_article.php';
+			supprimer_article();
+			break;
+
+
+		default:
+			// Si aucune route ne correspond
+			// On affiche une erreur 404
+			erreur404();
+	}
 }

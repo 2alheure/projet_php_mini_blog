@@ -79,4 +79,16 @@ switch ($_SERVER['PATH_INFO']) {
 		require DOSSIER_CONTROLLERS . '/controller_article.php';
 		creer_article();
 		break;
+
+
+	case '/modifier-article':
+		require DOSSIER_CONTROLLERS . '/controller_article.php';
+		modifier_article();
+		break;
+
+
+	default:
+		// Si aucune route ne correspond
+		// On affiche une erreur 404
+		erreur404();
 }

@@ -36,7 +36,7 @@ function construire_article_avec_post(array $post): Article {
 	$article->image = $post['image'];
 	$article->auteur = $post['auteur'];
 
-	if (empty($post['date'])) $article->date_de_publication = $post['date'];
+	if (!empty($post['date'])) $article->date_de_publication = $post['date'];
 	else $article->date_de_publication = date('Y-m-d H:i:s');	// On est obligés de saisir une date
 
 	return $article;
@@ -50,7 +50,7 @@ function afficher_liste_articles() {
 
 function afficher_details_article() {
 	if (!isset($_GET['id'])) {
-		die();
+		erreur404();
 	}
 
 	$article = Article::retrieveByPK($_GET['id']);
@@ -78,4 +78,41 @@ function creer_article() {
 	}
 
 	require DOSSIER_VIEWS . '/article/creer.html.php';
+}
+
+function modifier_article() {
+
+	if (empty($_GET['id'])) {
+		// Si on n'a pas d'id, la page ne peut pas fonctionner
+		erreur404();
+	}
+
+	// On récupère l'article
+	$article = Article::retrieveByPK($_GET['id']);
+
+	if (!empty($_POST)) {
+		// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
+
+		// On vérifie le $_POST
+		$erreurs = verifier_post_article($_POST);
+
+
+		if (empty($erreurs)) {
+			// S'il n'y a pas d'erreur
+
+			// On effectue les modification
+			$article->titre = $_POST['titre'];
+			$article->contenu = $_POST['contenu'];
+			$article->image = $_POST['image'];
+			$article->auteur = $_POST['auteur'];
+			if (!empty($_POST['date'])) $article->date_de_publication = $_POST['date'];
+
+			$article->save();
+
+			// On redirige
+			rediriger('/details-article?id=' . $article->id);
+		}
+	}
+
+	require DOSSIER_VIEWS . '/article/modifier.html.php';
 }

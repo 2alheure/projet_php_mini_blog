@@ -25,15 +25,17 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo BASE_URL . '/liste-articles'; ?>">Liste des articles</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
-					</li>
 
 					<?php
 					if (isset($_SESSION['utilisateur'])) {
 						// Si on a un utilisateur dans notre session,
 						// Ca signifie que l'utilisateur est connecté
 					?>
+						<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
+							<li class="nav-item">
+								<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
+							</li>
+						<?php } ?>
 
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo BASE_URL . '/deconnexion'; ?>">Se déconnecter</a>

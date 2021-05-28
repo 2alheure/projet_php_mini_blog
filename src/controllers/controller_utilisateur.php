@@ -1,6 +1,7 @@
 <?php
 
-require DOSSIER_MODELS . '/Utilisateur.php';
+// Ici il devrait y avoir un require du modèle Utilisateur
+// Mais il est déjà dans le router
 
 function verifier_post_connexion(array $post): array {
     $erreurs = [];    // Je vais renvoyer un tableau d'erreurs (vide par défaut)
@@ -85,8 +86,6 @@ function connexion() {
                     // Au mot de passe de l'utilisateur qu'on a récupéré de la BDD
                     // Qui est hashé
 
-                    // On démarre une session
-                    session_start();
                     // On y stocke notre utilisateur
                     $_SESSION['utilisateur'] = $utilisateur;
 
@@ -114,7 +113,7 @@ function connexion() {
 function deconnexion() {
     // Pour pouvoir détruire une session...
     // Il faut qu'elle existe
-    session_start();
+    // (démarrée dans le router)
     session_destroy();
 
     rediriger('/accueil');

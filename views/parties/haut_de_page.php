@@ -29,12 +29,22 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?php echo BASE_URL . '/connexion'; ?>">Se connecter</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?php echo BASE_URL . '/deconnexion'; ?>">Se déconnecter</a>
-						</li>
+
+						<?php
+						if (isset($_SESSION['utilisateur'])) {
+							// Si on a un utilisateur dans notre session,
+							// Ca signifie que l'utilisateur est connecté
+						?>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<?php echo BASE_URL . '/deconnexion'; ?>">Se déconnecter</a>
+							</li>
+						<?php } else { ?>
+
+							<li class="nav-item">
+								<a class="nav-link" href="<?php echo BASE_URL . '/connexion'; ?>">Se connecter</a>
+							</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>

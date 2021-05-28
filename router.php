@@ -14,9 +14,13 @@ SimpleOrm::useConnection($conn, 'projet_php');
 // Import de mes fonctions (si besoin)
 require 'functions.php';
 
+// On commence la session ici, comme ça on est sûr de l'avoir sur toutes nos pages
+// Notre session contient un Utilisateur...
+// Donc il nous faut son modèle
+require DOSSIER_MODELS . '/Utilisateur.php';
+session_start();
 
 // Gestion de mes routes en fonction de mes URLs
-
 
 if (!isset($_SERVER['PATH_INFO'])) {
 	// S'il n'y a pas de segment d'URL après "router.php"

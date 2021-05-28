@@ -24,3 +24,7 @@ img.banner+small {
     display: inline-block;
     vertical-align: top;
 }
+
+.conteneur-commentaires .commentaire:nth-child(odd) {
+    background-color: #ddd;
+}

@@ -1,6 +1,7 @@
 <?php
 
 require DOSSIER_MODELS . '/Article.php';
+require DOSSIER_MODELS . '/Commentaire.php';
 
 function verifier_post_article(array $post = []): array {
 	$erreurs = [];	// Je vais renvoyer un tableau d'erreurs (vide par défaut)
@@ -54,6 +55,7 @@ function afficher_details_article() {
 	}
 
 	$article = Article::retrieveByPK($_GET['id']);
+	$commentaires = Commentaire::retrieveByField('id_article', $_GET['id'], SimpleOrm::FETCH_MANY);
 	require DOSSIER_VIEWS . '/article/details.html.php';
 }
 

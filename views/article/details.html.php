@@ -18,4 +18,13 @@
 
 <p><?php echo $article->contenu; ?></p>
 
+<h2 class="mb-3">Commentaires</h2>
+
+<div class="conteneur-commentaires">
+	<?php
+	foreach ($commentaires as $commentaire) { ?>
+		<p class="row commentaire"><?php echo $commentaire->contenu; ?></p>
+	<?php } ?>
+</div>
+
 <?php require DOSSIER_VIEWS . '/parties/bas_de_page.php'; ?>

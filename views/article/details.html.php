@@ -4,7 +4,7 @@
 <img src="<?php echo $article->image; ?>" alt="Image d'illustration de l'article" class="banner" />
 <small>Publié le <?php echo date_formatee($article->date_de_publication); ?> par <?php echo $article->auteur; ?></small>
 
-<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+<?php if (isset($_SESSION['utilisateur']->role) && $_SESSION['utilisateur']->role == 'admin') {
 	// On vérifie si on a un "role" dans la session, 
 	// Et s'il correspond à l'admin
 ?>

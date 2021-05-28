@@ -31,7 +31,7 @@
 						// Si on a un utilisateur dans notre session,
 						// Ca signifie que l'utilisateur est connecté
 					?>
-						<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
+						<?php if (isset($_SESSION['utilisateur']->role) && $_SESSION['utilisateur']->role == 'admin') { ?>
 							<li class="nav-item">
 								<a class="nav-link" href="<?php echo BASE_URL . '/ajouter-article'; ?>">Ajouter un article</a>
 							</li>

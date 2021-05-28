@@ -58,7 +58,7 @@ function afficher_details_article() {
 }
 
 function creer_article() {
-	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+	if (isset($_SESSION['utilisateur']->role) && $_SESSION['utilisateur']->role == 'admin') {
 		// Le traitement est réservé à l'admin
 		if (!empty($_POST)) {
 			// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
@@ -86,7 +86,7 @@ function creer_article() {
 }
 
 function modifier_article() {
-	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+	if (isset($_SESSION['utilisateur']->role) && $_SESSION['utilisateur']->role == 'admin') {
 		// Le traitement est réservé à l'admin
 
 		if (empty($_GET['id'])) {
@@ -128,7 +128,7 @@ function modifier_article() {
 }
 
 function supprimer_article() {
-	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+	if (isset($_SESSION['utilisateur']->role) && $_SESSION['utilisateur']->role == 'admin') {
 		// Le traitement est réservé à l'admin
 
 		if (empty($_GET['id'])) {

@@ -20,7 +20,6 @@
 
 <h2 class="mb-3">Commentaires</h2>
 
-<?php if (isset($_SESSION['utilisateur'])) { ?>
 	<form action="<?php echo BASE_URL . '/poster-commentaire?id=' . $article->id; ?>" method="post">
 		<div class="form-group">
 			<label for="commentaire">Poster un commentaire</label>
@@ -29,7 +28,6 @@
 
 		<button type="submit" class="btn btn-primary">Poster</button>
 	</form>
-<?php } ?>
 
 <div class="conteneur-commentaires my-2">
 	<?php foreach ($commentaires as $commentaire) { ?>

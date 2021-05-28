@@ -2,6 +2,7 @@
 
 // Définition de mes constantes utiles
 const BASE_URL = 'http://localhost/test/projet_php_mini_blog/router.php';
+const ASSETS_URL = 'http://localhost/test/projet_php_mini_blog/assets';
 const DOSSIER_MODELS = __DIR__ . '/src/models';
 const DOSSIER_VIEWS = __DIR__ . '/views';
 const DOSSIER_CONTROLLERS = __DIR__ . '/src/controllers';

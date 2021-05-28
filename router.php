@@ -115,6 +115,12 @@ if (!isset($_SERVER['PATH_INFO'])) {
 			break;
 
 
+		case '/poster-commentaire':
+			require DOSSIER_CONTROLLERS . '/controller_commentaire.php';
+			poster_commentaire();
+			break;
+
+
 		default:
 			// Si aucune route ne correspond
 			// On affiche une erreur 404

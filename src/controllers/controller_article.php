@@ -58,77 +58,92 @@ function afficher_details_article() {
 }
 
 function creer_article() {
-	if (!empty($_POST)) {
-		// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
+	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+		// Le traitement est réservé à l'admin
+		if (!empty($_POST)) {
+			// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
 
-		// On vérifie le $_POST
-		$erreurs = verifier_post_article($_POST);
+			// On vérifie le $_POST
+			$erreurs = verifier_post_article($_POST);
 
 
-		if (empty($erreurs)) {
-			// S'il n'y a pas d'erreur
+			if (empty($erreurs)) {
+				// S'il n'y a pas d'erreur
 
-			// On crée un nouvel article
-			$article = construire_article_avec_post($_POST);
-			$article->save();
+				// On crée un nouvel article
+				$article = construire_article_avec_post($_POST);
+				$article->save();
 
-			// On redirige
-			rediriger('/details-article?id=' . $article->id);
+				// On redirige
+				rediriger('/details-article?id=' . $article->id);
+			}
 		}
-	}
 
-	require DOSSIER_VIEWS . '/article/creer.html.php';
+		require DOSSIER_VIEWS . '/article/creer.html.php';
+	} else {
+		erreur();
+	}
 }
 
 function modifier_article() {
+	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+		// Le traitement est réservé à l'admin
 
-	if (empty($_GET['id'])) {
-		// Si on n'a pas d'id, la page ne peut pas fonctionner
-		erreur404();
-	}
-
-	// On récupère l'article
-	$article = Article::retrieveByPK($_GET['id']);
-
-	if (!empty($_POST)) {
-		// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
-
-		// On vérifie le $_POST
-		$erreurs = verifier_post_article($_POST);
-
-
-		if (empty($erreurs)) {
-			// S'il n'y a pas d'erreur
-
-			// On effectue les modification
-			$article->titre = $_POST['titre'];
-			$article->contenu = $_POST['contenu'];
-			$article->image = $_POST['image'];
-			$article->auteur = $_POST['auteur'];
-			if (!empty($_POST['date'])) $article->date_de_publication = $_POST['date'];
-
-			$article->save();
-
-			// On redirige
-			rediriger('/details-article?id=' . $article->id);
+		if (empty($_GET['id'])) {
+			// Si on n'a pas d'id, la page ne peut pas fonctionner
+			erreur404();
 		}
-	}
 
-	require DOSSIER_VIEWS . '/article/modifier.html.php';
+		// On récupère l'article
+		$article = Article::retrieveByPK($_GET['id']);
+
+		if (!empty($_POST)) {
+			// Si le $_POST n'est pas vide, ça veut dire que le formulaire a été envoyé
+
+			// On vérifie le $_POST
+			$erreurs = verifier_post_article($_POST);
+
+
+			if (empty($erreurs)) {
+				// S'il n'y a pas d'erreur
+
+				// On effectue les modification
+				$article->titre = $_POST['titre'];
+				$article->contenu = $_POST['contenu'];
+				$article->image = $_POST['image'];
+				$article->auteur = $_POST['auteur'];
+				if (!empty($_POST['date'])) $article->date_de_publication = $_POST['date'];
+
+				$article->save();
+
+				// On redirige
+				rediriger('/details-article?id=' . $article->id);
+			}
+		}
+
+		require DOSSIER_VIEWS . '/article/modifier.html.php';
+	} else {
+		erreur();
+	}
 }
 
 function supprimer_article() {
+	if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+		// Le traitement est réservé à l'admin
 
-	if (empty($_GET['id'])) {
-		// Si on n'a pas d'id, la page ne peut pas fonctionner
-		erreur404();
+		if (empty($_GET['id'])) {
+			// Si on n'a pas d'id, la page ne peut pas fonctionner
+			erreur404();
+		}
+
+		// On récupère l'article
+		$article = Article::retrieveByPK($_GET['id']);
+		// On le supprime
+		$article->delete();
+
+		// On redirige
+		rediriger('/liste-articles');
+	} else {
+		erreur();
 	}
-
-	// On récupère l'article
-	$article = Article::retrieveByPK($_GET['id']);
-	// On le supprime
-	$article->delete();
-
-	// On redirige
-	rediriger('/liste-articles');
 }

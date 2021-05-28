@@ -31,9 +31,9 @@
 	</form>
 <?php } ?>
 
-<div class="conteneur-commentaires">
+<div class="conteneur-commentaires my-2">
 	<?php foreach ($commentaires as $commentaire) { ?>
-		<p class="row commentaire"><?php echo $commentaire->contenu; ?></p>
+		<p class="row commentaire my-2"><?php echo $commentaire->contenu; ?></p>
 	<?php } ?>
 </div>
 

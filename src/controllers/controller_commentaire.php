@@ -20,6 +20,7 @@ function poster_commentaire() {
                 $comm = new Commentaire;
                 $comm->contenu = $_POST['commentaire'];
                 $comm->date_publication = date('Y-m-d H:i:s');    // On met une date au bon format (format MySQL)
+                $comm->id_article = $_GET['id'];
                 $comm->save();
             }
         }

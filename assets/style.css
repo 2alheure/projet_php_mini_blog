@@ -25,6 +25,6 @@ img.banner+small {
     vertical-align: top;
 }
 
-.conteneur-commentaires .commentaire:nth-child(odd) {
+.conteneur-commentaires .commentaire:nth-child(even) {
     background-color: #ddd;
 }
